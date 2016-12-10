@@ -29,9 +29,6 @@ class GitList extends Component {
 GitList.propTypes = {
     // dispatch
     fetch: React.PropTypes.func.isRequired,
-    // router
-    location: location.isRequired,
-    router: React.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => {
