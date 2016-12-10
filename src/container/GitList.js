@@ -5,12 +5,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import * as actions from '../redux/gitList';
+import * as actions from '../reducer/gitList';
 
 class GitList extends Component {
 
     constructor(props) {
         super(props);
+        window.console.log("je construit ici");
         // The query is done in the constructor and not in the componentDidMount because the latter is called several times
         this.props.fetch();
     }

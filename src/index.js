@@ -1,39 +1,28 @@
-import React, {Component} from "react";
-import Router from 'react-router/lib/Router';
-import Route from 'react-router/lib/Route';
-import hashHistory from "react-router/lib/hashHistory";
-import {syncHistoryWithStore} from "react-router-redux";
-import {createStore, applyMiddleware, compose} from "redux";
+import React from "react";
+import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
-import {reducers} from "./redux";
-import GitList from "./container/GitList";
+import {createStore, applyMiddleware} from 'redux';
+import reducers from "./reducer";
+import App from './container/App';
+import {Router, IndexRoute, Route, browserHistory} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
 
-class App extends Component {
 
-    static configureStore() {
-        const showDevTool = window.devToolsExtension && process.env.NODE_ENV != 'production';
-        return compose(
-            applyMiddleware(thunk),
-            showDevTool ? window.devToolsExtension() : f => f
-        )(createStore)(reducers);
-    }
+const configureStore = () => {
+    const middlewares = [thunk];//, routerMiddleware(browserHistory)];
+    const state = {};
+    return createStore(reducers, state, applyMiddleware(...middlewares));
+};
 
-    constructor() {
-        super();
-        this.store = App.configureStore();
-        this.history = syncHistoryWithStore(hashHistory, this.store);
-    }
-
-    render() {
-        return (
-            <Provider store={this.store}>
-                <Router history={this.history}>
-                    <Route path="/" component={GitList}/>
-                </Router>
-            </Provider>
-        );
-    }
-}
-
-export default App;
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
+ReactDOM.render(
+    (
+        <Provider store={store}>
+            <Router history={history}>
+                <Route path="/" component={App}>
+                </Route>
+            </Router>
+        </Provider>), document.getElementById('root')
+);
