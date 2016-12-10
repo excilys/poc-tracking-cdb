@@ -6,7 +6,7 @@ import {syncHistoryWithStore} from "react-router-redux";
 import {createStore, applyMiddleware, compose} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
-import {reducers} from "./redux";
+import {reducers} from "redux";
 import "./App.css";
 import GitList from "./container/GitList";
 
