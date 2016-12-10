@@ -1,0 +1,9 @@
+
+.idea/
+.iml
+
+### macOS template
+*.DS_Store
+
+# Thumbnails
+._*
