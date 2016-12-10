@@ -51,7 +51,7 @@
     "webpack-dev-server": "1.16.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --port 3000 -d --colors --hot --inline --content-base ../resources/static",
+    "start": "webpack-dev-server --port 3000 -d --colors --hot --inline --content-base ../public",
     "lint": "eslint src --ext js,jsx",
     "config-saas": "node node_modules/node-sass/scripts/install.js",
     "bundle": "NODE_ENV=production webpack --colors -p --progress --define process.env.NODE_ENV='\"production\"'",
