@@ -53,6 +53,7 @@
   "scripts": {
     "start": "webpack-dev-server --port 3000 -d --colors --hot --inline --content-base ../public",
     "lint": "eslint src --ext js,jsx",
+    "dev": "./node_modules/.bin/webpack --watch --inline",
     "config-saas": "node node_modules/node-sass/scripts/install.js",
     "bundle": "NODE_ENV=production webpack --colors -p --progress --define process.env.NODE_ENV='\"production\"'",
     "test": "NODE_ENV=production mocha --require ignore-styles --compilers js:babel-register \"src/**/*.spec.*\" --recursive"
