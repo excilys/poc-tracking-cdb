@@ -1,9 +1,7 @@
 {
-  "traineesGithub":
-  [
-    {
-      "pseudo": "Euronia",
+  "traineesGithub": {
+    "Euronia": {
       "repo": "computer-database"
     }
-  ]
+  }
 }

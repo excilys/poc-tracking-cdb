@@ -4,12 +4,16 @@
 
 import React from "react";
 import GitList from "./GitList";
+import TraineeDetails from './TraineeDetails'
 
 class App extends React.Component {
 
     render() {
         return (
-            <GitList />
+            <div>
+                <GitList />
+                <TraineeDetails />
+            </div>
         );
     }
 }
