@@ -22,7 +22,6 @@ export function setRepos(repos) {
 }
 
 export function fetchRepos() {
-    window.console.log("je passe ici");
     return dispatch => {
         axios.get('https://api.github.com/orgs/excilys/repos').then(response => {
             dispatch(setRepos(response.data));

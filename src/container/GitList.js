@@ -11,7 +11,6 @@ class GitList extends Component {
 
     constructor(props) {
         super(props);
-        window.console.log("je construit ici");
         // The query is done in the constructor and not in the componentDidMount because the latter is called several times
         this.props.fetch();
     }
@@ -32,7 +31,9 @@ GitList.propTypes = {
 };
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        gitList: state.gitList
+    };
 };
 
 const mapDispatchToProps = dispatch => {

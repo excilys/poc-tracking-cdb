@@ -35,7 +35,9 @@ var config = {
                 query: {
                     presets: ['react','stage-0', 'es2015']
                 }
-            }/*,
+            },
+            { test: /\.json$/, loader: 'json' }
+            /*,
              {
              test: /(\.jsx|\.js)$/,
              loader: "eslint-loader",
