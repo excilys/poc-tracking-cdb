@@ -12,6 +12,7 @@ class TraineeDetails extends Component {
         super(props);
       let keys = Object.keys(this.props.traineesGithub);
         this.props.fetchInfos(keys[0], this.props.traineesGithub[keys[0]].repo);
+        this.props.fetchCommits(keys[0], this.props.traineesGithub[keys[0]].repo);
     }
 
     render() {
@@ -27,6 +28,7 @@ class TraineeDetails extends Component {
 TraineeDetails.propTypes = {
     // dispatch
     fetchInfos: React.PropTypes.func.isRequired,
+    fetchCommits: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -37,7 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchInfos: (pseudo, repo) => dispatch(actions.fetchFirstInfos(pseudo, repo))
+        fetchInfos: (pseudo, repo) => dispatch(actions.fetchFirstInfos(pseudo, repo)),
+        fetchCommits: (pseudo, repo) => dispatch(actions.fetchCommitList(pseudo, repo))
     };
 };
 
