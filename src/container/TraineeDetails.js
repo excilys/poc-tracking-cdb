@@ -2,28 +2,33 @@
  * Created by charles on 11/12/16.
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../reducer/traineesGithub';
+import TraineeStat from '../components/TraineeStat'
 
 class TraineeDetails extends Component {
 
     constructor(props) {
         super(props);
-      let keys = Object.keys(this.props.traineesGithub);
-        this.props.fetchInfos(keys[0], this.props.traineesGithub[keys[0]].repo);
-        this.props.fetchCommits(keys[0], this.props.traineesGithub[keys[0]].repo);
+        Object.keys(this.props.traineesGithub).forEach((key) => {
+            this.props.fetchInfos(key, this.props.traineesGithub[key].repo);
+            this.props.fetchCommits(key, this.props.traineesGithub[key].repo);
+        })
     }
 
     render() {
         return (
             <div className="App">
-                Get git Details
+                {Object.keys(this.props.traineesGithub).map(
+                    (pseudo) => {
+                        return (<TraineeStat key={pseudo} trainee={this.props.traineesGithub[pseudo]}/>)
+                    }
+                )}
             </div>
         );
     }
 }
-
 
 TraineeDetails.propTypes = {
     // dispatch
@@ -40,7 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchInfos: (pseudo, repo) => dispatch(actions.fetchFirstInfos(pseudo, repo)),
-        fetchCommits: (pseudo, repo) => dispatch(actions.fetchCommitList(pseudo, repo))
+        fetchCommits: (pseudo, repo) => dispatch(actions.fetch30FirstCommit(pseudo, repo))
     };
 };
 
